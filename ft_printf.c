@@ -6,7 +6,7 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 03:32:14 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/15 05:34:18 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:21:59 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,30 @@
 #include <stdio.h>
 #include <unistd.h>
 // cspdiuxX %
+
+static void ft_putchar(int c)
+{
+	write (1, &c, 1);
+}
 /*
 static void ft_putstr(char *s)
 {
 	int i;
 
 	if (!s)
-		return (NULL);
+		return ;
 	i = 0;
 	while (s[i])
 		{
 			ft_putchar(s[i]);
 			i++;
 		}
-}*/
-static void ft_putchar(int c)
-{
-	write (1, &c, 1);
 }
-/*
-static void	ft_putnbr_base(int n)
+*/
+static void	ft_putnbr_base(int n, char *base)
 {
-	if (fd < 0)
-		return ;
+	const char	typhex[] = "0123456789ABCDEF";
+	// strle = base
 	if (n == -2147483648)
 	{
 		ft_putchar('-');
@@ -49,13 +50,13 @@ static void	ft_putnbr_base(int n)
 		ft_putnbr_base(n * -1);
 	}
 	else if (n < 16)
-		ft_putchar((char)(n + '0'));
+		ft_putchar(typhex[n]);
 	else
 	{
 		ft_putnbr_base(n / 16);
-		ft_putchar(n % 16 + '0');
+		ft_putchar(typhex[n % 16]);
 	}
-}
+}/*
 static void	ft_putnbr(int n)
 {
 	if (fd < 0)
@@ -91,16 +92,24 @@ int	ft_printf(char const *format, ...)
 	i = 0;
 	while (*format && format)
 		{
-			if (*format == '%' && format[1] =='c') // encuentro un specifier, %c
-			{// dado specifier = %c
-			ft_putchar(va_arg(arg, int));
-			printf("%c\n",'p');}
-			/*else if (*format == '%' && format[1] =='s') //encuentro un specifier, %s
-			// dado specifier = %s
-			ft_putstr(va_arg(arg, char *));
-			else if (*format == '%' && format[1] == 'p') //encuentro un specifier, %p
-			// dado specifier = %p
-			ft_putnbrbase(va_arg(arg, long int));
+			/*if (*format == '%' && format[1] == 'c') // encuentro un specifier, %c
+				{	
+					// dado specifier = %c
+					ft_putchar(va_arg(arg, int));
+					printf("%c\n",'p');
+				}
+			else if (*format == '%' && format[1] == 's') //encuentro un specifier, %s
+			{	
+				// dado specifier = %s
+				ft_putstr(va_arg(arg, char *));
+				printf("%s\n", "pajarito");
+			}/*/
+			if (*format == '%' && format[1] == 'p') //encuentro un specifier, %p
+			{
+				// dado specifier = %p
+				ft_putnbr_base(va_arg(arg, unsigned int));
+			}
+			/*
 			else if (*format == '%' && format[1] == 'd') //encuentro un specifier, %d
 			// dado specifier = %d
 			ft_putnbr(va_arg(arg, int));
@@ -137,5 +146,8 @@ int	ft_printf(char const *format, ...)
 
 int	main(void)
 {
-	ft_printf("%c", 'k');
+	char *s;
+
+	ft_printf("%p", 23242424);
+	return (0);
 }
