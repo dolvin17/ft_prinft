@@ -6,13 +6,14 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 04:00:42 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/21 04:28:22 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:47:19 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_print_char(int c)
+size_t	ft_print_char(int c)
 {
 	write (1, &c, 1);
+	return (0);
 }
