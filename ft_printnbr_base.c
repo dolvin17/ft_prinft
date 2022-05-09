@@ -6,17 +6,17 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 03:29:26 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/21 05:43:36 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/04/22 02:07:43 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_putnbr_base(int n, char *base)
+size_t	ft_putnbr_base(int n, char *base)
 {
 	int	bhex;
 
-	bhex = ft_strlen(base);
+	bhex = ft_strlenv2(base);
 	if (n == -2147483648)
 	{
 		ft_print_char('-');
@@ -35,6 +35,7 @@ void	ft_putnbr_base(int n, char *base)
 		ft_putnbr_base(n / bhex, base);
 		ft_print_char(base[n % bhex]);
 	}
+	return (0);
 }
 /*
 int	main(void)
