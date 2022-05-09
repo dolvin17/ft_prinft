@@ -6,13 +6,13 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 05:04:25 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/21 05:06:13 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/04/22 02:07:37 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_print_nbr(int n)
+size_t	ft_print_nbr(int n)
 {
 	if (n == -2147483648)
 	{
@@ -32,4 +32,5 @@ void	ft_print_nbr(int n)
 		ft_print_nbr(n / 10);
 		ft_print_char(n % 10 + '0');
 	}
+	return (0);
 }
