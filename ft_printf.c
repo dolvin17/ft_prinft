@@ -6,100 +6,76 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 03:32:14 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/21 09:15:09 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/09 23:52:12 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "printf.h"
-// cspdiuxX %
+
 static int	keyholder(const char **format, char key)
 {
 	if ((*format)[0] == '%' && (*format[1]) == key)
-		return (1);
+		return (++*format, 1);
 	return (0);
 }
 
-static	int	numbers(char **format, va_list arg)
+static	int	numbers(char **format, va_list arg_list, size_t *i)
 {
-	size_t	output;
+	int	output;
 
 	output = 0;
-	if (keyholder(format, 'd') || (format 'i'))
-		output = ft_print_nbr(va_arg(arg, int));
+	if (keyholder(format, 'd'))
+		output = ft_print_nbr(va_arg(arg_list, int));
+	else if (keyholder(format, 'i'))
+		output = ft_print_nbr(va_arg(arg_list, int));
 	else if (keyholder(format, 'u'))
-		output = ft_print_nbr(va_arg(arg, unsigned int));
-	else if (keyholder(format, 'x' || (format 'X'))
-		output = ft_printnbr_base(va_arg(arg, unsigned int));
+		output = ft_print_nbr(va_arg(arg_list, unsigned int));
+	else if (keyholder(format, 'x') || keyholder(format, 'X'))
+		output = ft_printnbr_base(va_arg(arg_list, unsigned int));
 	else if (keyholder(format, 'p'))
-		output = ft_print_str("0x") + ft_printnbr_base(va_arg(arg, size_t)));
-	return(output);
-
+		output = write(1, "0x", 2) + ft_printnbr_base(va_arg(arg_list, size_t));
+	return (*i += output);
 }
 
 static size_t	strings(char *s)
 {
 	if (!s)
-		return (ft_print_str("(NULL"));
+		return (ft_print_str("(null)"), 6);
 	ft_print_str(s);
-	return (ft_strlenv2(str));
+	return (ft_strlenv2(s));
 }
 
-int	ft_printf(char const *format, ...)
+int	ft_printf(char const *__format, ...)
 {	
-	va_list	arg;
+	va_list	arg_list;
 	size_t	i;
+	char	*format;
 
-	va_start(arg, format);
+	format = (char *)__format;
+	va_start(arg_list, __format);
 	i = 0;
 	while (format && *format)
 	{	
-		if (*format == '%' && format[1] == 'c')
-		{		
-			ft_print_char(va_arg(arg, int));
-		}
-		else if (*format == '%' && format[1] == 's')
-		{		
-			ft_print_str(va_arg(arg, char *));
-		}
-		if (*format == '%' && format[1] == 'p')
-		{
-			ft_printnbr_base(va_arg(arg, unsigned int));
-		}
-		else if (*format == '%' && format[1] == 'd')
-		{
-			ft_print_nbr(va_arg(arg, unsigned int));
-		}
-		else if (*format == '%' && format[1] == 'i')
-		{
-			ft_print_nbr(va_arg(arg, unsigned int));
-		}
-		else if (*format == '%' && format[1] == 'u')
-		{
-			ft_print_nbr(va_arg(arg, unsigned int));
-		}
-		else if (*format == '%' && format[1] == 'x')
-		{
-			ft_printnbr_base(va_arg(arg, unsigned int));
-		}
-		else if (*format == '%' && format[1] == 'X')
-		{
-			ft_printnbr_base(va_arg(arg, unsigned int));
-		}
+		if (keyholder(&format, 'c') && ++i)
+			ft_print_char(va_arg(arg_list, int));
+		else if (keyholder(&format, 's'))
+			i += ft_print_str(va_arg(arg_list, char *));
+		else if (numbers(&format, arg_list, &i))
+			;
+		else if (keyholder(&format, '%') && ++i)
+			write(1, "%", 1);
 		else
-			*format == '%' && format[1] == '%';
-			{
-			ft_print_char(va_arg(arg, int));
-			}
-			++format;
+			ft_print_char(*format);
+		ft_print_char(++i);
+			format++;
+	}
+	return (va_end(arg_list), i);
 }
-	i = va_arg(arg, size_t);
-
-	return (va_end(arg), i);
-int	main(void)
+/*int	main(void)
 {
 	char *s;
 
-	ft_printf("%p", 23242424);
+	ft_printf("%s", 23242424);
 	return (0);
 }
+*/
