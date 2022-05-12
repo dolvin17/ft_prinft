@@ -6,11 +6,11 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 05:04:25 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/22 02:07:37 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:00:52 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 size_t	ft_print_nbr(int n)
 {

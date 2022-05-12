@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr_base.c                                 :+:      :+:    :+:   */
+/*   ft_printn_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 03:29:26 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/04/22 02:07:43 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:23:30 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-size_t	ft_putnbr_base(int n, char *base)
+size_t	printn_base(int n, char *base)
 {
 	int	bhex;
 
@@ -21,18 +21,18 @@ size_t	ft_putnbr_base(int n, char *base)
 	{
 		ft_print_char('-');
 		ft_print_char('2');
-		ft_putnbr_base(147483648, base);
+		printn_base(147483648, base);
 	}
 	else if (n < 0)
 	{
 		ft_print_char('-');
-		ft_putnbr_base(n * -1, base);
+		printn_base(n * -1, base);
 	}
 	else if (n < bhex)
 		ft_print_char(base[n]);
 	else
 	{
-		ft_putnbr_base(n / bhex, base);
+		printn_base(n / bhex, base);
 		ft_print_char(base[n % bhex]);
 	}
 	return (0);
@@ -42,6 +42,6 @@ int	main(void)
 {
 	const char	typhex[] = "0123456789abcdef";
 
-	printf("%s\n", ft_putnbr_base(2345, &typex));
+	printf("%s\n", printn_base(2345, &typex));
 	return (0)
 }*/
