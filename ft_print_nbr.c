@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 05:04:25 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/12 20:00:52 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:56:46 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_print_nbr(int n)
+int	ft_print_nbr(int n)
 {
 	if (n == -2147483648)
 	{

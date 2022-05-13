@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 04:00:42 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/12 20:00:56 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:57:43 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_print_char(int c)
+int	ft_print_char(int c)
 {
 	write (1, &c, 1);
-	return (0);
+	return (1);
 }

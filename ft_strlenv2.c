@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlenv2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:42:00 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/12 20:01:07 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:57:13 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlenv2(const char *s)
+int	ft_strlenv2(const char *s)
 {
 	size_t	i;
 
