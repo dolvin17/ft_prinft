@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printn_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
+/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 03:29:26 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/13 17:57:05 by dolvin17         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:44:06 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printn_base(int n, char *base)
+int	ft_printn_base(int n, char *base)
 {
 	int	bhex;
 
@@ -21,18 +21,18 @@ int	printn_base(int n, char *base)
 	{
 		ft_print_char('-');
 		ft_print_char('2');
-		printn_base(147483648, base);
+		ft_printn_base(147483648, base);
 	}
 	else if (n < 0)
 	{
 		ft_print_char('-');
-		printn_base(n * -1, base);
+		ft_printn_base(n * -1, base);
 	}
 	else if (n < bhex)
 		ft_print_char(base[n]);
 	else
 	{
-		printn_base(n / bhex, base);
+		ft_printn_base(n / bhex, base);
 		ft_print_char(base[n % bhex]);
 	}
 	return (0);
