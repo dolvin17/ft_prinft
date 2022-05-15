@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
+/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 03:32:14 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/15 15:48:09 by dolvin17         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:23:37 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static int	keyholder(va_list holder, char format)
 	if (format == 'd' || format == 'i')
 		ptr += ft_printn_base(va_arg(holder, int), "0123456789");
 	if (format == 'u')
-		ptr += ft_printnu_base(va_arg(holder, unsigned int), "0123456789");
+		ptr += ft_printnu_base(va_arg(holder, unsigned), "0123456789");
 	if (format == 'X')
-		ptr += ft_printn_base(va_arg(holder, int), "0123456789ABCDEF");
+		ptr += ft_print_hex(va_arg(holder, unsigned), "0123456789ABCDEF");
 	if (format == 'x')
-		ptr += ft_printn_base(va_arg(holder, unsigned), "0123456789abcdef");
+		ptr += ft_print_hex(va_arg(holder, unsigned), "0123456789abcdef");
 	if (format == 'p')
-		ptr += ft_print_str("0x")
-			+ ft_printn_base(va_arg(holder, size_t), "0123456789abcdef");
+		ptr += (ft_print_str("0x"), 2)
+			+ ft_print_hex(va_arg(holder, size_t), "0123456789abcdef");
 	if (format == 'c')
 		ptr += ft_print_char(va_arg(holder, int));
 	if (format == 's')
@@ -55,7 +55,7 @@ int	ft_printf(char const *format, ...)
 		}
 		else
 			printptr += ft_print_char(format[i]);
-		i++;
+			i++;
 	}
 	va_end(key_list);
 	return (printptr);
@@ -69,11 +69,11 @@ int	main(void)
 	unsigned int	un;
 
 	str = "Marvin is a cat";
-	n = 43;
+	n = 92233;
 	c = '0';
 	un = 234;
-	ft_printf("El string es: %s\n", str);
-	printf("El string es: %s\n", str);
+	ft_printf("El string es: %s\n", NULL);
+	printf("El string es: %s\n", NULL);
 	ft_printf("El string es: %s\n", str);
 	printf("El string es: %s\n", str);
 	ft_printf("El numero es: %d\n", n);
