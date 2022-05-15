@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
+/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 05:37:27 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/14 22:53:39 by dolvin17         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:29:08 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 # include <stdio.h>
 # include <unistd.h>
 
-int	ft_printf(char const *format, ...);
-int	ft_print_char(int c);
-int	ft_printn_base(int n, char *base);
-int	ft_printnu_base(unsigned int n, char *base);
-int	ft_print_str(char *s);
+int		ft_printf(char const *format, ...);
+int		ft_print_char(int c);
+int		ft_printn_base(int n, char *base);
+int		ft_printnu_base(unsigned int n, char *base);
+int		ft_print_hex(unsigned long n, char *base);
+int		ft_print_str(char *s);
 size_t	ft_strlenv2(const char *s);
 
 #endif
