@@ -3,15 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printn_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 03:29:26 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/13 18:44:06 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:05:45 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static size_t ft_num_len(int n)
+{
+	size_t	len;
+
+	len = 0;
+	if (n == 0)
+		len = 1;
+	if (n < 0)
+	{
+		n *= -1;
+		len++;
+	}
+	while (n != 0)
+		{
+			(n /= 10);
+			len++;
+		}
+		return (len);
+}
 int	ft_printn_base(int n, char *base)
 {
 	int	bhex;
@@ -35,7 +54,7 @@ int	ft_printn_base(int n, char *base)
 		ft_printn_base(n / bhex, base);
 		ft_print_char(base[n % bhex]);
 	}
-	return (0);
+	return (ft_num_len(n));
 }
 /*
 int	main(void)

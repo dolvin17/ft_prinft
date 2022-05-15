@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 03:32:14 by ghuertas          #+#    #+#             */
-/*   Updated: 2022/05/13 20:27:44 by ghuertas         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:48:09 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,21 @@ static int	keyholder(va_list holder, char format)
 	if (format == 'd' || format == 'i')
 		ptr += ft_printn_base(va_arg(holder, int), "0123456789");
 	if (format == 'u')
-		ptr = ptr + ft_printnu_base(va_arg(holder, unsigned int), "0123456789");
+		ptr += ft_printnu_base(va_arg(holder, unsigned int), "0123456789");
 	if (format == 'X')
-		ptr = ptr + ft_printn_base(va_arg(holder, int), "0123456789ABCDEF");
+		ptr += ft_printn_base(va_arg(holder, int), "0123456789ABCDEF");
 	if (format == 'x')
-		ptr = ptr + write(1, "0x", 2)
-			+ ft_printn_base(va_arg(holder, unsigned), "0123456789abcdef");
+		ptr += ft_printn_base(va_arg(holder, unsigned), "0123456789abcdef");
 	if (format == 'p')
-		ptr = ptr + write(1, "0x10", 4)
+		ptr += ft_print_str("0x")
 			+ ft_printn_base(va_arg(holder, size_t), "0123456789abcdef");
 	if (format == 'c')
-		ptr = ptr + ft_print_char(va_arg(holder, int));
+		ptr += ft_print_char(va_arg(holder, int));
 	if (format == 's')
-		ptr = ptr + ft_print_str(va_arg(holder, char *));
+		ptr += ft_print_str(va_arg(holder, char *));
 	if (format == '%')
-		ptr = ptr + write(1, "%", 1);
-	return (0);
+		ptr += write(1, "%", 1);
+	return (ptr);
 }
 
 int	ft_printf(char const *format, ...)
@@ -51,8 +50,8 @@ int	ft_printf(char const *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			printptr += keyholder(key_list, format[i + 1]);
 			i++;
-			printptr += keyholder(key_list, format[i]);
 		}
 		else
 			printptr += ft_print_char(format[i]);
@@ -61,7 +60,7 @@ int	ft_printf(char const *format, ...)
 	va_end(key_list);
 	return (printptr);
 }
-
+/*
 int	main(void)
 {
 	char			*str;
@@ -70,11 +69,11 @@ int	main(void)
 	unsigned int	un;
 
 	str = "Marvin is a cat";
-	n = -12;
+	n = 43;
 	c = '0';
 	un = 234;
-	ft_printf("El string es: %s\n", NULL);
-	printf("El string es: %s\n", NULL);
+	ft_printf("El string es: %s\n", str);
+	printf("El string es: %s\n", str);
 	ft_printf("El string es: %s\n", str);
 	printf("El string es: %s\n", str);
 	ft_printf("El numero es: %d\n", n);
@@ -95,3 +94,4 @@ int	main(void)
 	printf("Recibiendo void*: %p\n", str);
 	return (0);
 }
+*/
