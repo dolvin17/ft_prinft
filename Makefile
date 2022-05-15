@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+         #
+#    By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/30 20:28:36 by ghuertas          #+#    #+#              #
-#    Updated: 2022/05/14 22:52:05 by dolvin17         ###   ########.fr        #
+#    Updated: 2022/05/15 20:27:29 by ghuertas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS =	ft_print_char.c \
 		ft_printf.c \
 		ft_printn_base.c \
 		ft_printnu_base.c \
+		ft_print_hex.c \
 		ft_strlenv2.c \
 
 OBJS = ${SRCS:.c=.o}
